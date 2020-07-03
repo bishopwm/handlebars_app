@@ -19,7 +19,10 @@ app.all('/receive_sms/', function (request, response) {
     let text = request.body.Text || request.query.Text;
     //Print the message
     console.log('Message received - From: ' + from_number + ', To: ' + to_number + ', Text: ' + text);
+    // res.render('main', {layout: 'index', myNumber: from_number, theirNumber: to_number, myText: text});
 });
 app.listen(app.get('port'), function () {
     console.log('Node app is running on port', app.get('port'));
 });
+
+
