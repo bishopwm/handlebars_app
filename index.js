@@ -1,15 +1,16 @@
 const express = require('express');
 const app = express();
 const port = 5000;
+// Require Axios/BodyParser for Message Content Storage
 const axios = require('axios');
 const bodyParser = require('body-parser');
+// Require sender to call sendSMS.js file on 'Send Message' submission
 var sender = require('./sendSMS.js');
 
-//Loads the handlebars module
+// Load handlebars module
 const handlebars = require('express-handlebars');
-//Sets our app to use the handlebars engine
 app.set('view engine', 'hbs');
-//Sets handlebars configurations (we will go through them later on)
+// Set handlebars configurations 
 app.engine('hbs', handlebars({
     layoutsDir: __dirname + '/views/layouts',
     extname: 'hbs',
@@ -17,11 +18,14 @@ app.engine('hbs', handlebars({
     defaultLayout: 'index',
     }));
 app.get('/', (req, res) => {
-    //instead of res.render('main', {layout: 'index'});
     res.render('main');
 });
+
+// Express/BodyParser defaults
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// Route for serving up recent SMS messages (View Messages)
 app.get('/view-messages', (req, res) => {
      axios.get("https://ironrest.herokuapp.com/willbcollection").then(response => {
         console.log(response);
@@ -29,9 +33,13 @@ app.get('/view-messages', (req, res) => {
         res.render('main.hbs', {messageData});
     });
 });
+
+// Route for rendering 'Send Message' page:
 app.get("/send-message", (req, res) => {
     res.render('send.hbs');
   });
+
+// Route for POSTing new message to sendSMS.js file
 app.post("/send-message", function(req,res) {
     console.log(req.body.To, req.body.Text)
     let toNumber = req.body.To;
