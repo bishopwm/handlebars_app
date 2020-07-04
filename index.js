@@ -22,6 +22,17 @@ app.get('/', (req, res) => {
 res.render('main', {layout: 'index'})
 });
 
+
+//I would like to use a real api but let's use this for the sake of //the simplicity of the article
+// fakeApi = () => 'Faker';
+// app.get('/', (req, res) => {
+// res.render('main', {layout: 'index', proPlayer: fakeApi()});
+// });
+
 app.listen(port, () => console.log(`App listening to port ${port}`));
+
+
+
+
 
 
