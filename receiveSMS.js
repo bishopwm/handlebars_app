@@ -27,8 +27,9 @@ app.all('/receive_sms/', function (request, response) {
     console.log('Message received - From: ' + from_number + ', To: ' + to_number + ', Text: ' + text);
     axios.post("https://ensgdc8zidz8k.x.pipedream.net", {from_number_json, to_number_json, text_json}).then(response => {
         console.log(response);
-        });
+    });
 });
 app.listen(app.get('port'), function () {
     console.log('Node app is running on port', app.get('port'));
 });
+
