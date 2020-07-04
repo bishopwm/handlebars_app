@@ -25,7 +25,7 @@ app.all('/receive_sms/', function (request, response) {
     let text_json = JSON.stringify(request.body.Text);
     //Print the message
     console.log('Message received - From: ' + from_number + ', To: ' + to_number + ', Text: ' + text);
-    axios.post("https://ensgdc8zidz8k.x.pipedream.net", {from_number_json, to_number_json, text_json}).then(response => {
+    axios.post("https://ironrest.herokuapp.com/willbcollection", {from_number_json, to_number_json, text_json}).then(response => {
         console.log(response);
     });
 });

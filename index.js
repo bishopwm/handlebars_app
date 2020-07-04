@@ -30,8 +30,10 @@ app.get('/cosas', (req, res) => {
      axios.get("https://ironrest.herokuapp.com/willbcollection").then(response => {
         console.log(response);
         let messageId = response.data[0]._id;
-        let messageText = response.data[0].response.message;
-        res.render('main.hbs', {messageId, messageText});
+        let fromNumber = response.data[0].from_number_json;
+        let toNumber = response.data[0].to_number_json;
+        let messageText = response.data[0].text_json;
+        res.render('main.hbs', {messageId, messageText, fromNumber, toNumber});
     });
 });
 
