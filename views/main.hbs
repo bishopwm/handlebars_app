@@ -1,6 +1,19 @@
-<h1>View Recent SMS</h1>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<h1>My Plivo Dashboard</h1>
 <hr>
-<h3>Message Text: {{messageText}}</h3>
-<h3>From: {{fromNumber}}</h3>
-<h3>To: {{toNumber}}</h3>
-<h3>Message ID: {{messageId}}</h3>
+<a href='/'>Home</a><br>
+<a href='view-messages'>View Recent Messages</a><br>
+<a href='send-message'>Send Message</a><br><br>
+
+
+<button>Fetch Recent Messages</button>
+
+  <ul>
+    {{#each messageData}}
+      <li>From: {{this.from_number_json}}</li>
+      <li>To: {{this.to_number_json}}</li>
+      <li>Message: {{this.text_json}}</li>
+      <li>ID: {{this._id}}</li>
+    <hr>
+    {{/each}}
+  </ul>

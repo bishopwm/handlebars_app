@@ -18,23 +18,15 @@ app.get('/', (req, res) => {
     res.render('main');
 });
 app.use(express.static('public'))
-app.get('/stuff', (req, res) => {
-    let myVariable = 'heyyyyy'
-    res.render('main.hbs', {myVariable});
-});
-app.get('/things', (req, res) => {
-    let thisVariable = 'thissssss'
-    res.render('main.hbs', {thisVariable});
-});
-app.get('/cosas', (req, res) => {
+app.get('/view-messages', (req, res) => {
      axios.get("https://ironrest.herokuapp.com/willbcollection").then(response => {
         console.log(response);
-        let messageId = response.data[0]._id;
-        let fromNumber = response.data[0].from_number_json;
-        let toNumber = response.data[0].to_number_json;
-        let messageText = response.data[0].text_json;
-        res.render('main.hbs', {messageId, messageText, fromNumber, toNumber});
+        let messageData = response.data
+        res.render('main.hbs', {messageData});
     });
 });
+app.get("/send-message", (req, res) => {
+    res.render('send.hbs');
+  });
 
 app.listen(port, () => console.log(`App listening to port ${port}`));
