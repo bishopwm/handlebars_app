@@ -1,13 +1,23 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <h1>My Plivo Dashboard</h1>
 <hr>
-<a href='/'>Home</a><br>
-<a href='view-incoming-messages'>View Received Messages</a><br>
-<a href='view-sent-messages'>View Sent Messages</a><br>
-<a href='send-message'>Send New Message</a><br><br>
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" href='/'>Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="inbox" href='view-incoming-messages'>Inbox</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href='view-sent-messages'>Sent Messages</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href='send-message'>Send New Message</a>
+  </li>
+</ul>
 
+<button type="button" id="refresh" class="btn btn-info" style="visibility: hidden">Refresh Recent Messages</button>
 
-<button>Refresh Recent Messages</button>
 
   <ul>
     {{#each messageData}}
@@ -22,7 +32,7 @@
 
     <ul>
     {{#each sentMessageData}}
-    <h5>Outbound Message</h5>
+    <h5>Sent Message</h5>
       <li>From: Plivo</li>
       <li>To: {{this.toNumber}}</li>
       <li>Message: {{this.messageText}}</li>

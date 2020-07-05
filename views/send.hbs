@@ -1,15 +1,40 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<a href='/'>Home</a><br>
-<a href='view-incoming-messages'>View Received Messages</a><br>
-<a href='view-sent-messages'>View Sent Messages</a><br>
-<a href='send-message'>Send New Message</a><br><br><br>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous">
+</script>
+<h1>My Plivo Dashboard</h1>
+<hr>
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" href='/'>Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="inbox" href='view-incoming-messages'>Inbox</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href='view-sent-messages'>Sent Messages</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href='send-message'>Send New Message</a>
+  </li>
+</ul>
 
 <h2>Send Message</h2>
 
 <form action="/send-message" method="POST">
+<div class="alert alert-success col-2" role="alert" style="visibility: hidden">
+  Message Sent!
+</div>
     <label>To</label><br>
     <input name="To" type="text" placeholder="Phone Number"><br>
     <label>Message</label><br>
     <input name="Text" type="text" placeholder="Type here..."><br><br>
-    <input type="submit" value="Submit"/>
+    <input id="submit" type="submit" value="Submit"/>
 </form>
+<script>
+$('#submit').click(function(){ 
+   $('div').css('visibility','visible');
+}); 
+</script>

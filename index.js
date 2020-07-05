@@ -14,7 +14,6 @@ app.set('view engine', 'hbs');
 app.engine('hbs', handlebars({
     layoutsDir: __dirname + '/views/layouts',
     extname: 'hbs',
-    //new configuration parameter
     defaultLayout: 'index',
     }));
 app.get('/', (req, res) => {
@@ -44,10 +43,12 @@ app.post("/send-message", function(req,res) {
     console.log(req.body.To, req.body.Text)
     let toNumber = req.body.To;
     let messageText = req.body.Text;
-    sender.sendSMS(toNumber, messageText);
-    axios.post("https://ironrest.herokuapp.com/willbcollection2", {toNumber, messageText}).then(response => {
-        console.log(response);
+    sender.sendSMS(toNumber, messageText),
+    axios.post("https://ironrest.herokuapp.com/willbcollection2", {toNumber, messageText}).then(apiRes => {
+        console.log(apiRes);
     });
+    res.redirect(301, '/view-sent-messages');
+
 });
 
 // Route for getting sent messages

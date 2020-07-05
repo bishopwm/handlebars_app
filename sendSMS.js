@@ -21,6 +21,7 @@ let sendSMS = function sendSMS(toNumber, messageText){
         ).then(function(response) {
         console.log(response);
     });
+    
 };
 
 module.exports.sendSMS = sendSMS;
