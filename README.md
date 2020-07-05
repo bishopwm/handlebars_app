@@ -32,4 +32,4 @@
 ###### In console/terminal, run:
 * From root, run `node index.js`
 
-##### View app locally at localhost:[your_port]
+##### View app locally at localhost:[your_desired_port_from_.env]
