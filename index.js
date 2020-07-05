@@ -4,7 +4,7 @@ const port = 5000;
 // Require Axios/BodyParser for Message Content Storage
 const axios = require('axios');
 const bodyParser = require('body-parser');
-// Require sender to call sendSMS.js file on 'Send Message' submission
+// Require sender to call sendSMS.js script on 'Send Message' form submission
 var sender = require('./sendSMS.js');
 
 // Load handlebars module
@@ -49,7 +49,6 @@ app.post("/send-message", function(req,res) {
         console.log(apiRes);
     });
     res.redirect(301, '/view-sent-messages');
-
 });
 
 // Route for getting sent messages

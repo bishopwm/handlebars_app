@@ -4,7 +4,7 @@
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
   crossorigin="anonymous">
 </script>
-<h1>My Plivo Dashboard</h1>
+<h1 class="main-heading">My SMS App</h1>
 <hr>
 <ul class="nav">
   <li class="nav-item">
@@ -21,17 +21,21 @@
   </li>
 </ul>
 
-<h2>Send Message</h2>
-
-<form action="/send-message" method="POST">
-<div class="alert alert-success col-2" role="alert" style="visibility: hidden">
-  Message Sent!
+<div class="send-container">
+    <h2>Send New Message</h2>
 </div>
-    <label>To</label><br>
+<form class="form form-group" action="/send-message" method="POST">
+<div class="form-components-container">
+    <label>Recipient Number:</label><br>
     <input name="To" type="text" placeholder="Phone Number"><br>
-    <label>Message</label><br>
-    <input name="Text" type="text" placeholder="Type here..."><br><br>
-    <input id="submit" type="submit" value="Submit"/>
+    <label id="message-label">Message:</label><br>
+    <input id="message-input" name="Text" type="text" placeholder="Type here..."><br><br>
+    <div class="alert alert-success col-2" role="alert" style="visibility: hidden">
+    Message Sent!
+    </div>
+    <input class="btn btn-primary" id="submit" type="submit" value="Submit"/>
+</div>
+    
 </form>
 <script>
 $('#submit').click(function(){ 
