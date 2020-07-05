@@ -26,7 +26,7 @@
 * Express Server: From root, run `node receiveSMS.js` to start express server
 * ngrok: From root, run `./ngrok http 8000` ( NOTE: If you don't have .ngrok installed, see https://ngrok.com/download )
 * ngrok: From ./ngrok panel, copy the HTTPS forwarding URL
-* Navigate to console.plivo.com/voice.applications and create a new app (or edit an existing one). Set the Message URL to your ./ngrok forwarding URL
+* Navigate to `console.plivo.com/voice/applications` and create a new app (or edit an existing one). Set the `Message URL` to your ./ngrok forwarding URL
 
 ##### Frontend (Handlebars) Instructions
 ###### In console/terminal, run:
