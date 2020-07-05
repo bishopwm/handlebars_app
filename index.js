@@ -43,8 +43,9 @@ app.post("/send-message", function(req,res) {
     console.log(req.body.To, req.body.Text)
     let toNumber = req.body.To;
     let messageText = req.body.Text;
+    let timestamp = new Date();
     sender.sendSMS(toNumber, messageText),
-    axios.post("https://ironrest.herokuapp.com/willbcollection2", {toNumber, messageText}).then(apiRes => {
+    axios.post("https://ironrest.herokuapp.com/willbcollection2", {toNumber, messageText, timestamp}).then(apiRes => {
         console.log(apiRes);
     });
     res.redirect(301, '/view-sent-messages');

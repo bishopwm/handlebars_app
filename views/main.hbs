@@ -15,27 +15,32 @@
     <a class="nav-link" href='send-message'>Send New Message</a>
   </li>
 </ul>
-
-<button type="button" id="refresh" class="btn btn-info" style="visibility: hidden">Refresh Recent Messages</button>
-
-
-  <ul>
+<button 
+    type="button" 
+    id="refresh" 
+    class="btn btn-info" 
+    style="visibility: hidden">
+    Refresh Recent Messages
+</button>
+<ul class="message-list">
     {{#each messageData}}
-    <h5>Inbound Message</h5>
-      <li>From: {{this.from_number_json}}</li>
-      <li>To: {{this.to_number_json}}</li>
-      <li>Message: {{this.text_json}}</li>
-      <li>ID: {{this._id}}</li>
+    <h5 class="message-header">Inbound Message</h5>
+        <li><strong>Time Received:</strong> {{this.timestamp}}</li>
+        <li><strong>From:</strong> {{this.from_number_json}}</li>
+        <li><strong>To:</strong> {{this.to_number_json}}</li>
+        <li><strong>ID:</strong> {{this._id}}</li>
+        <li><strong>Message:</strong> <em>{{this.text_json}}</em></li>
     <hr>
     {{/each}}
-  </ul>
+</ul>
 
-    <ul>
+<ul class="message-list">
     {{#each sentMessageData}}
-    <h5>Sent Message</h5>
-      <li>From: Plivo</li>
-      <li>To: {{this.toNumber}}</li>
-      <li>Message: {{this.messageText}}</li>
+    <h5 class="message-header">Sent Message</h5>
+        <li><strong>Time Sent:</strong> {{this.timestamp}}</li>
+        <li><strong>From:</strong> Plivo</li>
+        <li><strong>To:</strong> {{this.toNumber}}</li>
+        <li><strong>Message:</strong> <em>{{this.messageText}}</em></li>
     <hr>
     {{/each}}
-  </ul>
+</ul>

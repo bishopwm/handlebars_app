@@ -26,9 +26,10 @@ app.all('/receive_sms/', function (request, response) {
     let from_number_json = JSON.stringify(request.body.From);
     let to_number_json = JSON.stringify(request.body.To);
     let text_json = JSON.stringify(request.body.Text);
+    let timestamp = new Date();
     // Post SMS objects to storage and log in console
     console.log('Message received - From: ' + from_number + ', To: ' + to_number + ', Text: ' + text);
-    axios.post("https://ironrest.herokuapp.com/willbcollection", {from_number_json, to_number_json, text_json}).then(response => {
+    axios.post("https://ironrest.herokuapp.com/willbcollection", {from_number_json, to_number_json, text_json, timestamp}).then(response => {
         console.log(response);
     });
 });

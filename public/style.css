@@ -5,3 +5,11 @@
     padding: 4px;
     list-style: none
     } */
+.message-header {
+    font-size: 1.2em;
+    color: rgb(16, 50, 94);
+}
+
+.message-list {
+    list-style-type: none;
+}
