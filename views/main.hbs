@@ -2,18 +2,30 @@
 <h1>My Plivo Dashboard</h1>
 <hr>
 <a href='/'>Home</a><br>
-<a href='view-messages'>View Recent Messages</a><br>
-<a href='send-message'>Send Message</a><br><br>
+<a href='view-incoming-messages'>View Received Messages</a><br>
+<a href='view-sent-messages'>View Sent Messages</a><br>
+<a href='send-message'>Send New Message</a><br><br>
 
 
-<button>Fetch Recent Messages</button>
+<button>Refresh Recent Messages</button>
 
   <ul>
     {{#each messageData}}
+    <h5>Inbound Message</h5>
       <li>From: {{this.from_number_json}}</li>
       <li>To: {{this.to_number_json}}</li>
       <li>Message: {{this.text_json}}</li>
       <li>ID: {{this._id}}</li>
+    <hr>
+    {{/each}}
+  </ul>
+
+    <ul>
+    {{#each sentMessageData}}
+    <h5>Outbound Message</h5>
+      <li>From: Plivo</li>
+      <li>To: {{this.toNumber}}</li>
+      <li>Message: {{this.messageText}}</li>
     <hr>
     {{/each}}
   </ul>

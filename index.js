@@ -26,7 +26,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Route for serving up recent SMS messages (View Messages)
-app.get('/view-messages', (req, res) => {
+app.get('/view-incoming-messages', (req, res) => {
      axios.get("https://ironrest.herokuapp.com/willbcollection").then(response => {
         console.log(response);
         let messageData = response.data
@@ -45,6 +45,18 @@ app.post("/send-message", function(req,res) {
     let toNumber = req.body.To;
     let messageText = req.body.Text;
     sender.sendSMS(toNumber, messageText);
+    axios.post("https://ironrest.herokuapp.com/willbcollection2", {toNumber, messageText}).then(response => {
+        console.log(response);
+    });
+});
+
+// Route for getting sent messages
+app.get('/view-sent-messages', (req, res) => {
+    axios.get("https://ironrest.herokuapp.com/willbcollection2").then(response => {
+       console.log(response);
+       let sentMessageData = response.data
+       res.render('main.hbs', {sentMessageData});
+   });
 });
 
 app.listen(port, () => console.log(`App listening to port ${port}`));
