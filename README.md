@@ -5,11 +5,11 @@
 ##### Credentials and local variables: 
 * To run locally, create a new `.env` file in the root folder with the following variables:
 
-    AUTH_ID='your_id_here'
-    AUTH_TOKEN='your_token_here'
-    PHONE1='your_personal_phone'
-    PHONE2='your_plivo_phone'
-    PORT=[desired_port]
+    AUTH_ID='your_id_here'  return
+    AUTH_TOKEN='your_token_here'  return
+    PHONE1='your_personal_phone'  return
+    PHONE2='your_plivo_phone'  return
+    PORT=[desired_port]  return
 
 
 ##### Package Dependencies: 
